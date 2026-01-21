@@ -1,15 +1,17 @@
 const express =require('express');
-const rateLimit = require('./middleware/rateLimit.middleware');
 const errorHandler = require('./middleware/error.middleware');
+const httpLogger = require('./middleware/logger.middleware');
+
 
 const app=express();
 
+// Body Parser
 app.use(express.json());
-app.use(rateLimit);
+app.use(httpLogger);
 
-app.use('/auth', require('./routes/auth.routes.js'));
+
+app.use('/auth', require('./routes/auth.routes'));
 app.use('/tasks', require('./routes/task.routes'));
-
 app.use(errorHandler);
 
-module.exports=app;
+module.exports=app

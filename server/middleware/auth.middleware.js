@@ -1,10 +1,20 @@
+const jwt = require('jsonwebtoken');
 const ApiError = require('../utils/apiError');
 
 module.exports = (req,res,next)=>{
-    const auth = req.headers.authorization;
+    const authHeader = req.headers.authorization;
 
-    if(auth||auth!=='Bearer fake-jwt-token'){
+    if(!authHeader||!authHeader.startsWith('Bearer')){
         throw new ApiError(401,'Unauthorized');
     }
-    next();
-}
+    const token = authHeader.split(' ')[1];
+
+    try{
+        const decoded = jwt.verify(token,process.env.JWT_SECRET);
+        req.userId=decoded.userId;
+        req.role=decoded.role;
+        next();
+    }catch(err){
+        throw new ApiError(401,'Invalid Token');
+    } 
+};
