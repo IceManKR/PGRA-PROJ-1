@@ -12,7 +12,7 @@ exports.authLimiter = rateLimit({
 exports.readLimiter=rateLimit({
     windowMs:60*1000,//1Min
     max:60,
-    stanardHeaders:true,
+    standardHeaders:true,
     legacyHeaders:false,
 });
 

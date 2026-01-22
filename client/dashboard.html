@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PGRA – Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css" />
+
+</head>
+<body>
+    <div class="container">
+  <h1>Task Dashboard</h1>
+
+  <button id="logoutBtn">Logout</button>
+
+  <hr />
+
+  <h2>Create Task</h2>
+  <input type="text" id="taskTitle" placeholder="Task title" />
+  <button id="createTaskBtn">Add Task</button>
+
+  <p id="createStatus"></p>
+
+  <hr />
+
+  <h2>Your Tasks</h2>
+  <ul id="taskList"></ul>
+
+  <div>
+    <button id="prevPageBtn">Previous</button>
+    <span id="pageInfo"></span>
+    <button id="nextPageBtn">Next</button>
+  </div>
+
+  <p id="status"></p>
+
+  <hr />
+
+  <div id="adminSection" class="admin" style="display:none;">
+    <h2>Admin Actions</h2>
+    <button id="purgeBtn">Purge All Tasks</button>
+    <p id="adminStatus"></p>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/tasks.js"></script>
+  </div>
+</body>
+</html>
